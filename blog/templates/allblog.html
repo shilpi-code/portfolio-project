@@ -1,0 +1,14 @@
+<h1 style="text-align:center">This is my blog</h1>
+
+<h2>SHILPI has written {{blogging.count}}blog{{blogging.count|pluralize}}!!</h2>
+{% for i in blogging %}
+
+<a href="{% url 'blog:func' i.id  %}"> <!-- here blog:func is used to denote the app whose function func is called-->
+<br><h2>{{i.title|safe}}</h2></a> 
+
+<!-- this safe is written to include html tag that we have used in our admin db-->
+<p>{{i.description|striptags|truncatechars:50}} </p> <!--used striptags to ignore html tags-->
+{{i.date|date:'M d Y'|upper}}<br>
+
+
+{% endfor %}

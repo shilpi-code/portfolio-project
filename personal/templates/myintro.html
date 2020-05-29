@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>SHILPI'S PORTFOLIO</h1> <br>
+
+{% load static %}
+
+<br><a href="{% url 'blog:folder'  %}">SHOW BLOGS</a>
+
+<br><br><img src="{% static 'shilpi.jpg' %}"> <br>
+<br><a href ="{% static 'javacertificate.pdf' %}">RESUME</a>
+
+
+
+
+{% for i in projects %}
+<h2>{{i.title}}</h2>
+<p>{{i.description}} </p>
+<img src="{{i.image.url}}" height=70 width= 70>
+
+<!-- this href command will run if we set up url in admin site in our project.-->
+<!-- so if url will be there then link will show otherwise not and we can provide any url to that project.  -->
+{% if i.url %}
+<a href="{{i.url}}">link</a>
+{% endif %}
+
+{% endfor %}
+{% endblock %}
